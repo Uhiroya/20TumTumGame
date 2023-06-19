@@ -9,11 +9,13 @@ public class ButtonSelect : MonoBehaviour
     public RectTransform canvasRect;
     public Vector2 MousePos;
     private Image _selectSprite;
+    private RectTransform _myRectTransform;
     private void Awake()
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         canvasRect = canvas.GetComponent<RectTransform>();
         _selectSprite = GetComponent<Image>();
+        _myRectTransform = GetComponent<RectTransform>();
     }
     public void Update()
     {
@@ -25,8 +27,8 @@ public class ButtonSelect : MonoBehaviour
 
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            if(Mathf.Abs(transform.position .x - MousePos.x) <= 130
-                && Mathf.Abs(transform.position.y - MousePos.y) <= 130)
+            if(Mathf.Abs(transform.position .x - MousePos.x) <= _myRectTransform.sizeDelta.x / 2
+                && Mathf.Abs(transform.position.y - MousePos.y) <= _myRectTransform.sizeDelta.y / 2)
             {
                 if(_selectSprite.enabled == false)
                 {

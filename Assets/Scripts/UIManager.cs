@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text _scoreText;
     [SerializeField] Text _destroyCountText;
     [SerializeField] Text _TimeText;
-    [SerializeField] float _sizeChangeTime = 1;
 
     private static UIManager instance;
     public static UIManager Instance => instance;
@@ -50,7 +49,6 @@ public class UIManager : MonoBehaviour
         {
             if( LevelManager.Instance.Score / 10000 > _timeAddperScore)
             {
-                StartCoroutine("TimeTextSizeChange", _sizeChangeTime);
                 TimeLimit += _addTime;
                 _timeAddperScore += 1;
             }
@@ -129,12 +127,5 @@ public class UIManager : MonoBehaviour
         }
         _scoreText.text = $"ÉXÉRÉA: {_curentScore}";
     }
-    IEnumerator TimeTextSizeChange(int second)
-    {
-        _TimeText.transform.localScale = new Vector3(1.1f, 1.1f, 1);
-        yield return new WaitForSeconds(second);
-        _TimeText.transform.localScale = new Vector3(1, 1, 1);
-    }
-
 
 }
