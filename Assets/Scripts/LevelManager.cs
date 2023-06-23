@@ -150,7 +150,7 @@ public class LevelManager : MonoBehaviour
     }
     public void BallDown(BallManager ball)
     {
-        if (!GameOver)
+        if (!GameOver && !ball.IsSelect)
         {
             _selectBallList.Add(ball);
             ball.SetIsSelect(true);
